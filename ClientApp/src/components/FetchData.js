@@ -1,6 +1,7 @@
 import React, { Component ,useState } from 'react';
 import axios from 'axios';
 import ItemsList from './ItemsList';
+import { ClipLoader } from 'react-spinners';
 
 export class FetchData extends Component {
   static displayName = FetchData.name;
@@ -26,7 +27,10 @@ export class FetchData extends Component {
 
   render() {
     let contents = this.state.loading
-      ? <p><em>Loading...</em></p>
+      ? <div className="spinner">
+          <ClipLoader color="#3498db" loading={this.state.loading} size={50} />
+          <p className="loading-text">Loading</p>
+        </div>
       : FetchData.renderItemsList(this.state.items);
 
     return (

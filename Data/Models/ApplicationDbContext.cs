@@ -15,5 +15,7 @@ namespace Store.Data
     public DbSet<SceneValue> SceneValues { get; set; }
     public DbSet<Order> Order{get;set;}
 
+    public DbSet<ItemColorAndCount> ItemColorAndCount {get;set;}
+
 }
 }

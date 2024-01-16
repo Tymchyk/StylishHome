@@ -10,9 +10,9 @@ namespace Store.Data
         public List<Items>AllItems();
         public List<Items> ItemsByType(string ItemType);
 
-        public Items GetItemById(int id);
+        public List<ItemColorAndCount> GetItemById(int id);
 
-        public void AddItems(Items item);
+        public void AddItems();
         public void UpdateItems();
         public void DeleteItems();
     }

@@ -5,7 +5,11 @@ a {
 }
 .main{
   background: linear-gradient(45deg,#FFA500, #FF69B4);
-  border-radius: 1px solid blue;
+}
+.mainContainer{
+  margin:0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -35,12 +39,11 @@ code {
   width:350px;
   height:600px;
   margin-top: -800px;
-  margin-left: 1000px;
+  margin-left: 900px;
   position: absolute;
 }
 .mainTitle{
   position: absolute;
-  margin-left: -50px;
   width: 900px;
   height: 800px;
   font-size: 150px;
@@ -53,7 +56,7 @@ code {
 
 .title{
   position: absolute;
-  margin-left: -50px;
+  margin-left: 20px;
   width: 900px;
   height: 800px;
   font-size: 30px;
@@ -69,10 +72,10 @@ code {
 
 .custom-shape-divider-bottom-1702062582 {
   position: relative;
-  top: -15px;
-  left: -300px;
+  top: 0px;
   width:1900px;
   height: 900px;
+  left:-120px;
   overflow: hidden;
   line-height: 0;
   transform: rotate(180deg);
@@ -90,19 +93,19 @@ code {
 }
 
 .middle{
-  width: 1900px;
-  height: 900px;
+  width:1440px;
+  height: 800px;
+  left:-100px;
 }
 
 
 .custom-shape-divider-top-1702063406 {
   position: relative;
   top: 0;
-  left: -300px;
-  width: 1900px;
+  width:1440px;
   height: 900px;
-  overflow: hidden;
   line-height: 0;
+  left:-100px;
 }
 
 .custom-shape-divider-top-1702063406 svg {
@@ -117,43 +120,602 @@ code {
   fill: #FFFFFF;
 }
 
-.card-img-top{
+.card-img-top-item{
   width:150px;
   height: 250px;
   margin-left:60px;
 }
+.card-img-top-home{
+  border-radius:25px;
+  width:350px;
+  height: 550px;
+}
+.home-btn{
+  margin-left:100px;
+}
+
 .sofa{
   width:250px;
   margin-left: 20px;
   height: 150px;
   margin-top: 100px;
 }
-.card{
-  width: 18rem;
+
+.cardHome{
+  width: 400px;
   margin-top: 10px;
+  margin-left: 40px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-  height:400px;
-  
+  height:500px;
+  transition: transform 0.3s ease-in-out;
+}
+.cardHome:hover,
+.cardHome.hovered {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.containerHome{
+  margin-left: -50px;
+  margin-top:100px;
+}
+
+.service-title{
+  margin-left:550px;
+  margin-top: -30px;
+  font-size: 60px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+  opacity: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}
+.review-title{
+  margin-left: 500px;
+  position:absolute;
+  margin-top: -150px;
+  font-size: 60px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+  opacity: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.swiper{
+  width: 1000px;
+  height: 300px;
+  border: 1px solid silver;
+  border-radius: 45px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.swiper-slide{
+  width:700px;
+  height:200px;
+  margin:0 auto;
+  margin-top:10px;
+}
+
+.swiper-text{
+  font-size: 25px;
 }
 .itemBlock{
   width:500px;
-  height: 800px;
-  border: 1px solid silver;
+  height: 200px;
   border-radius: 45px;
-  margin-left: 800px;
-  margin-top: -800px;
+  margin-left: 750px;
+  margin-top: 50px;
 
 }
-
-.itemDescription{
-  width:500px;
-  height:600px;
-  overflow: scroll;
-}
-
 .itemTitle{
-  margin-left: 200px;
+  margin-left: 800px;
+  margin-top: -600px;
 }
 .itemText{
   margin-left:15px;
+  margin-top: 100px;
+}
+
+.add_remove{
+  margin-left: 10px;
+}
+
+.add_remove_container{
+  margin-left: 200px;
+  margin-top: -50px;
+  position: absolute;
+}
+
+.spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+.spinner-scene{
+ margin-top: -150px;
+ margin-left: 50px;
+}
+.loading-text {
+  margin-top: 100px;
+  margin-left: -60px; 
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.loading-text::after {
+  content: '';
+  animation: dots 1.5s infinite;
+}
+.loading-text-scene {
+  margin-left: -10px; 
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.loading-text-scene::after {
+  content: '';
+  animation: dots 1.5s infinite;
+}
+.loading-text-login {
+  margin-top: 10px;
+}
+
+.loading-text-login::after {
+  content: '';
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '.   ';
+  }
+  40% {
+    content: '..  ';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+.room{
+  margin-left: -100px;
+  width:1500px;
+  height: 650px;
+}
+.AboutUs{
+  position: absolute;
+  width:550px;
+  height:600px;
+  margin-top: -650px;
+}
+.AboutImg{
+  width:500px;
+  height:400px;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 45px;
+}
+.About{
+  width:700px;
+  height:600px;
+  margin-left: 550px;
+  margin-top: -400px;
+}
+.AboutTitle{
+  font-size: 50px;
+  margin-left:200px;
+  font-family: 'Playfair Display', serif;
+  opacity: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}
+.AboutText{
+  font-size: 20px;
+}
+
+@media (max-width: 1400px) {
+  .wardrobe{
+    width:300px;
+    height:500px;
+    margin-top: -800px;
+    margin-left: 700px;
+  }
+  .mainTitle{
+    width: 600px;
+    height: 800px;
+    font-size: 110px;
+  }
+  .title{
+    width: 700px;
+    height: 800px;
+    font-size: 25px;
+    margin-top: -500px;
+    font-family: 'Playfair Display', serif;
+    color: white;
+  }
+  .demo{
+    margin-left:400px;
+  }
+  .service-title{
+    margin-left:400px;
+  }
+  .review-title{
+    margin-left: 400px;
+  }
+  .card-img-top-home{
+    margin-left: 10px;
+    margin-top:10px;
+    width:250px;
+    height: 250px;
+  }
+  .home-btn{
+    margin-left:75px;
+  }
+  .cardHome{
+    width: 300px;
+  }
+  .containerHome{
+    margin-left: 0px;
+  }
+
+  .colorBlock{
+    margin-top: 100px;
+  }
+  .AboutUs{
+    position: absolute;
+    width:550px;
+    height:600px;
+    margin-top: -650px;
+  }
+  .AboutImg{
+    width:400px;
+    height:300px;
+    margin-top: 0px;
+
+  }
+  .About{
+    width:600px;
+    height:600px;
+    margin-left: 450px;
+    margin-top: -310px;
+  }
+  .AboutText{
+    font-size: 18px;
+  }
+  .swiper{
+    width: 800px;
+    height: 200px;
+  }
+  .swiper-slide{
+    width:700px;
+    height:150px;
+  }
+  
+  .swiper-text{
+    font-size: 18px;
+  }
+  
+}
+@media (max-width: 1199px) {
+  .wardrobe{
+    width:300px;
+    height:500px;
+    margin-top: -800px;
+    margin-left: 600px;
+  }
+  .mainTitle{
+    width: 600px;
+    height: 800px;
+    font-size: 100px;
+  }
+  .title{
+    width: 600px;
+    height: 600px;
+    font-size: 20px;
+    margin-top: -500px;
+  }
+  .demo{
+    margin-left:300px;
+  }
+  .service-title{
+    margin-left:300px;
+  }
+  .review-title{
+    margin-left: 300px;
+  }
+  .card-img-top-home{
+    margin-left: 10px;
+    margin-top:10px;
+    width:200px;
+    height: 200px;
+  }
+  .home-btn{
+    margin-left:75px;
+  }
+  .cardHome{
+    width: 250px;
+    height:350px;
+  }
+  .card-text{
+    font-size: 14px;
+  }
+  .card-title{
+    font-size: 15px;
+  }
+  .home-btn{
+    margin-left:60px;
+    width:100px;
+  }
+  .containerHome{
+    margin-left: 0px;
+  }
+  .AboutUs{
+    position: absolute;
+    width:450px;
+    height:600px;
+    margin-top: -650px;
+  }
+  .AboutImg{
+    width:350px;
+    height:250px;
+    margin-top: 0px;
+
+  }
+  .middle{
+    height: 650px;
+  }
+  .About{
+    width:500px;
+    height:600px;
+    margin-left: 400px;
+    margin-top: -310px;
+  }
+  .AboutText{
+    font-size: 16px;
+  }
+  .swiper{
+    width: 800px;
+    height: 200px;
+  }
+  .swiper-slide{
+    width:700px;
+    height:150px;
+  }
+  
+  .swiper-text{
+    font-size: 18px;
+  }
+  
+}
+
+@media (max-width: 995px) {
+  .wardrobe{
+    width:175px;
+    height:300px;
+    margin-top: -500px;
+    margin-left: 450px;
+  }
+  .mainTitle{
+    width: 500px;
+    height: 600px;
+    font-size: 70px;
+    margin-top: -500px;
+    margin-left:20px;
+  
+  }
+  .title{
+    width: 400px;
+    height: 600px;
+    font-size: 16px;
+    margin-top: -350px;
+  }
+  .demo{
+    margin-left:250px;
+    margin-top: -225px;
+    width:150px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .service-title{
+    margin-left:250px;
+    font-size: 40px;
+  }
+  .review-title{
+    margin-left: 200px;
+    font-size: 40px;
+  }
+  .card-img-top-home{
+    margin-left: 10px;
+    margin-top:10px;
+    width:150px;
+    height: 150px;
+  }
+  .cardHome{
+    width: 200px;
+    height:300px;
+  }
+  .card-text{
+    font-size: 12px;
+  }
+  .card-title{
+    font-size: 13px;
+  }
+  .home-btn{
+    margin-left:35px;
+    width:100px;
+    font-size: 12px;
+  }
+  .containerHome{
+    margin-left: -30px;
+  }
+  .middle{
+    width:1440px;
+    height: 550px;
+  }
+  .AboutUs{
+    position: absolute;
+    width:400px;
+    height:400px;
+    margin-top: -650px;
+  }
+  .AboutTitle{
+    font-size: 40px;
+    margin-left: 150px;
+  }
+  .AboutImg{
+    width:250px;
+    height:150px;
+    margin-top: 200px;
+
+  }
+  .About{
+    width:350px;
+    height:400px;
+    margin-left: 300px;
+    margin-top: -150px;
+  }
+  .AboutText{
+    font-size: 12px;
+  }
+  .swiper{
+    width: 600px;
+    height: 150px;
+  }
+  .swiper-slide{
+    width:500px;
+    height:100px;
+  }
+  
+  .swiper-text{
+    font-size: 14px;
+  }
+  .swiper-by{
+    font-size: 12px;
+    margin-top: -10px;
+  }
+  .custom-shape-divider-bottom-1702062582 {
+    height: 600px;
+  }
+  .custom-shape-divider-top-1702063406 {
+    height: 600px;
+  }
+  
+}
+@media (max-width: 769px) {
+  .wardrobe{
+    width:125px;
+    height:200px;
+    margin-top: -400px;
+    margin-left: 375px;
+  }
+  .mainTitle{
+    width: 400px;
+    height: 600px;
+    font-size: 60px;
+    margin-top: -400px;
+    margin-left:20px;
+  
+  }
+  .title{
+    width: 350px;
+    height: 600px;
+    font-size: 13px;
+    margin-top: -300px;
+  }
+  .demo{
+    margin-left:200px;
+    margin-top: -200px;
+    width:100px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .service-title{
+    margin-left:175px;
+    font-size: 30px;
+  }
+  .review-title{
+    margin-left: 150px;
+    font-size: 30px;
+    margin-top:-100px;
+  }
+  .card-img-top-home{
+    margin-left: 10px;
+    margin-top:10px;
+    width:100px;
+    height: 100px;
+  }
+  .cardHome{
+    width: 150px;
+    height:250px;
+    margin-left: 20px;
+  }
+  .card-text{
+    font-size: 10px;
+  }
+  .card-title{
+    font-size: 10px;
+  }
+  .home-btn{
+    margin-left:35px;
+    width:100px;
+    font-size: 12px;
+  }
+  .containerHome{
+    margin-left: 20px;
+  }
+  .middle{
+    width:1440px;
+    height: 450px;
+  }
+  .AboutUs{
+    position: absolute;
+    width:400px;
+    height:300px;
+    margin-top: -650px;
+  }
+  .AboutTitle{
+    font-size: 30px;
+    margin-left: 75px;
+  }
+  .AboutImg{
+    width:200px;
+    height:120px;
+    margin-top: 300px;
+
+  }
+  .About{
+    width:300px;
+    height:300px;
+    margin-left: 220px;
+    margin-top: -150px;
+  }
+  .AboutText{
+    font-size: 10px;
+  }
+  .swiper{
+    width: 400px;
+    height: 150px;
+  }
+  .swiper-slide{
+    width:300px;
+    height:100px;
+  }
+  
+  .swiper-text{
+    font-size: 12px;
+  }
+  .swiper-by{
+    font-size: 10px;
+    margin-top: -10px;
+  }
+  .custom-shape-divider-bottom-1702062582 {
+    height: 500px;
+  }
+  .custom-shape-divider-top-1702063406 {
+    height: 500px;
+  }
+  
 }

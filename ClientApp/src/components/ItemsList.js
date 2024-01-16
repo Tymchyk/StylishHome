@@ -28,10 +28,10 @@ const ItemsList = ({ items, itemsPerPage }) => {
       {currentItems.map((item, index) => (
             <div className="col" key={item.id}>
               <Link to = {`/item/${item.id}`}>     
-               <div className="card">
+               <div className="card cardItem">
                      {item.verticalRotation
-                     ? (<img className="card-img-top sofa" src={process.env.PUBLIC_URL + '/images/' + item.imageName} alt="My image"/>)
-                     : (<img className="card-img-top" src={process.env.PUBLIC_URL + '/images/' + item.imageName} alt="My image"/>)}
+                     ? (<img className="card-img-top card-img-top-item sofa" src={process.env.PUBLIC_URL + '/images/' + item.imageName} alt="My image"/>)
+                     : (<img className="card-img-top card-img-top-item" src={process.env.PUBLIC_URL + '/images/' + item.imageName} alt="My image"/>)}
                       <div className="card-body">
                          <p className="card-text">{item.itemName}</p>
                       </div>

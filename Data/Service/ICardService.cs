@@ -10,6 +10,8 @@ namespace Store.Data
         public void AddValueToCard(Order order);
         public List<Order> GetFromCard(CheckUser user);
         public void Confirm(CheckUser user);
+
+        public void UpdateOrderItem(OrderForm order);
         public  IEnumerable<IGrouping<int, Order>> MyOrders(CheckUser user);
     }
 }

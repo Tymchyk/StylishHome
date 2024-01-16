@@ -7,15 +7,28 @@ namespace Store.Controllers;
 [Route("[controller]")]
 public class ItemsController : ControllerBase
 {
-    public List<Items> Values = new List<Items>{
-        new Items{ItemName = "Sofa", 
-        ItemDescription = "A sofa is a comfortable and upholstered seating furniture designed for relaxation and socializing. Typically featuring a frame with padded cushions, a sofa offers a supportive and inviting surface for sitting or reclining. Sofas come in various styles, sizes, and materials, allowing them to complement diverse interior aesthetics. They are a central piece of furniture in living rooms, lounges, and common areas, providing a cozy and functional space for individuals and groups to gather, converse, or unwind. The design versatility of sofas caters to different preferences, ranging from classic and traditional to modern and contemporary styles.", 
-        ItemCount = 12, ItemDiscount = 30, ItemPrice= 1350.0, imageName ="sofa.png",VerticalRotation = true, ItemType = "sofa",SceneValues = new SceneValue{ItemScene = "sofa.glb", X = 0.04, Y = 0.04, Z = 0.04}},
-        new Items{ItemName = "Wardrobe", ItemDescription = "A wardrobe is a furniture piece designed for storing clothes and personal items. Equipped with doors, drawers, and shelves, it provides organized storage while contributing to room aesthetics. Found in bedrooms and dressing rooms, wardrobes offer functional solutions for keeping clothing and accessories in order.", 
-        ItemCount = 10, ItemDiscount = 30, ItemPrice= 2045.0,imageName ="wardobe1.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe1.glb", X = 0.01, Y = 0.01, Z = 0.01}},
-        new Items{ItemName = "Armchair", ItemDescription = "Something", ItemCount = 34, ItemDiscount = 30, ItemPrice= 1115.0,imageName ="armchair.png",VerticalRotation = false,ItemType = "sofa",SceneValues = new SceneValue{ItemScene = "armchair.glb", X = 1, Y = 1, Z = 1}},
-        new Items{ItemName = "Wardrobe", ItemDescription = "Something", ItemCount = 34, ItemDiscount = 30, ItemPrice= 1675.0,imageName ="wardrobe2.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe2.glb", X = 0.01, Y = 0.01, Z = 0.01}},
-        new Items{ItemName = "Wardrobe", ItemDescription = "Something", ItemCount = 34, ItemDiscount = 30, ItemPrice= 2000.0,imageName ="wardrobe.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe.glb", X = 2, Y = 2, Z = 2}},
+    public List<ItemColorAndCount> Values = new List<ItemColorAndCount>{
+        new ItemColorAndCount{
+        Item = new Items{ItemName = "Elegant Comfort", 
+        ItemDescription = "Description: Immerse yourself in an atmosphere of luxury and comfort with our Elegant Comfort sofa. It impresses with its stylish design and plushness. Perfect for evening conversations or cozy readings.Parameters:Dimensions: 210 cm x 90 cm x 75 cm Upholstery Material: High-quality fabric.Frame: Wooden, sturdy, and reliable.Color: Beige", 
+        imageName ="sofa.png",VerticalRotation = true, ItemType = "sofa"},
+        SceneValues = new SceneValue{ItemScene = "sofachairs/sofa.glb", X = 0.04, Y = 0.04, Z = 0.04},
+        ItemPrice= 1350.0,
+        CountByColor = 3,
+        Color = "standart"
+
+        },
+        //new Items{ItemName = "Dreamy Getaway", 
+        //ItemDescription = "Description: Your perfect companion for relaxation and sleep. The Dreamy Getaway sleeper sofa easily transforms from an elegant sofa into a comfortable bed. The perfect blend of style and functionality.", 
+        //ItemCount = 5, ItemDiscount = 30, ItemPrice= 550.0, imageName ="armchair.png",VerticalRotation = true, ItemType = "sofa",SceneValues = new SceneValue{ItemScene = "sofachairs/armchair.glb", X = 1, Y = 1, Z = 1}},
+        //new Items{ItemName = "Minimalist Chic", 
+        //ItemDescription = "Description: Add a modern charm to your space with the Minimalist Chic sofa. Its clean lines and minimalist design seamlessly fit into any interior, creating an atmosphere of lightness and style.", 
+        //ItemCount = 12, ItemDiscount = 30, ItemPrice= 750.0, imageName ="arm_chair.png",VerticalRotation = true, ItemType = "sofa",SceneValues = new SceneValue{ItemScene = "sofachairs/arm_chair.glb", X = 1, Y = 1, Z = 1}},
+        //new Items{ItemName = "Airy Space", ItemDescription = "A wardrobe is a furniture piece designed for storing clothes and personal items. Equipped with doors, drawers, and shelves, it provides organized storage while contributing to room aesthetics. Found in bedrooms and dressing rooms, wardrobes offer functional solutions for keeping clothing and accessories in order.", 
+        //ItemCount = 10, ItemDiscount = 30, ItemPrice= 2045.0,imageName ="wardobe1.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe/wardrobe1.glb", X = 0.02, Y = 0.02, Z = 0.02}},
+        //new Items{ItemName = "Enigmatic Depth", ItemDescription = "The Enigmatic Depth wardrobe impresses with its elegance and practicality. With mirrored doors, it expands the space and provides a touch of brightness to the room.", ItemCount = 3, ItemDiscount = 30, ItemPrice= 1675.0,imageName ="wardrobe2.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe/wardrobe_dual.glb", X = 2, Y = 2, Z = 2}},
+        //new Items{ItemName = "Urban Elegance", ItemDescription = "Elevate your bedroom with the Urban Elegance wardrobe. Its sleek design and urban appeal make it a statement piece in any modern living space. With ample storage space and a contemporary aesthetic, it seamlessly combines functionality and style.", ItemCount = 4, ItemDiscount = 30, ItemPrice= 1379.0,imageName ="wardrobe.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe/wardrobe.glb", X = 2, Y = 2, Z = 2}},
+        //new Items{ItemName = "Rustic Charm", ItemDescription = "Embrace the warmth of rustic charm with our Rustic Charm wardrobe. Crafted from solid wood with a distressed finish, it exudes a cozy, farmhouse-inspired feel. The intricate detailing and spacious interior make it a timeless addition to your home.", ItemCount = 12, ItemDiscount = 30, ItemPrice= 999.99,imageName ="fancy.png",VerticalRotation = false,ItemType = "wardrobe",SceneValues = new SceneValue{ItemScene = "wardrobe/drawer_fancy.glb", X = 2, Y = 2, Z = 2}},
 
     };
     private readonly ILogger<ItemsController> _logger;
@@ -32,10 +45,7 @@ public class ItemsController : ControllerBase
     [HttpGet("[action]")]
     public IActionResult GetItems()
     { 
-        foreach(Items item in Values)
-        {
-            _service.AddItems(item);
-        }
+        _service.AddItems();
         var items = _service.AllItems();
         return Ok(items);
     }
@@ -50,7 +60,7 @@ public class ItemsController : ControllerBase
     [HttpGet("[action]/{Value}")]
     public IActionResult GetItem(int Value)
     { 
-        Items item = _service.GetItemById(Value);
+        List<ItemColorAndCount> item = _service.GetItemById(Value);
         return Ok(item);
     }
 
@@ -82,6 +92,12 @@ public class ItemsController : ControllerBase
     public IActionResult ConfirmeOrder([FromBody] CheckUser user) 
     { 
         _card.Confirm(user);
+        return Ok();
+    }
+    [HttpPut("[action]")]
+    public IActionResult UpdateOrder([FromBody] OrderForm order) 
+    { 
+        _card.UpdateOrderItem(order);
         return Ok();
     }
 

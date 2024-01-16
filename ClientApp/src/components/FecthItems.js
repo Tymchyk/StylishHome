@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import ItemsList from './ItemsList';
 import { useParams } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 const FetchItems =() => {
     const [items, setItems] = useState([]);
@@ -33,7 +34,10 @@ const FetchItems =() => {
     };
   
     const contents = loading
-      ? <p><em>Loading...</em></p>
+      ? <div className="spinner">
+          <ClipLoader color="#3498db" loading={loading} size={50} />
+          <p className="loading-text">Loading</p>
+        </div>
       : renderItemsList(items);
   
     return (

@@ -5,6 +5,7 @@ import { ItemsByType } from "./components/ItemsByType";
 import { ItemsById } from "./components/ItemById";
 import { MyCard } from "./components/MyCard";
 import { MyOrders } from "./components/MyOrders";
+import { RoomScene } from "./components/RoomScene";
 
 const AppRoutes = [
   {
@@ -34,6 +35,10 @@ const AppRoutes = [
   {
     path: '/orders',
     element: <MyOrders />
+  },
+  {
+    path: '/room',
+    element: <RoomScene />
   }
 ];
 

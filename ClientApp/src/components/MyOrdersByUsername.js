@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
+import { ClipLoader } from 'react-spinners';
 
 const MyOrdersByUsername =() => {
     const [items, setItems] = useState([]);
@@ -51,14 +52,14 @@ const MyOrdersByUsername =() => {
               </thead>
               <tbody>
           {orderGroup.map((order) => {
-            total += order.item.itemPrice * order.userCount;
+            total += order.itemColorAndCount.itemPrice * order.userCount;
             return(
            <tr>
            <th scope="row">{order.item.id}</th>
-           <td>{order.item.itemName}</td>
+           <td>{order.item.itemName}({order.itemColorAndCount.color})</td>
            <td>{order.userCount}</td>
-           <td>{order.item.itemPrice}$</td>
-           <td>{order.item.itemPrice * order.userCount}$</td>
+           <td>{order.itemColorAndCount.itemPrice }$</td>
+           <td>{order.itemColorAndCount.itemPrice  * order.userCount}$</td>
            </tr>
             );
           })}
@@ -81,7 +82,10 @@ const MyOrdersByUsername =() => {
     };
   
     const contents = loading
-      ? <p><em>Loading...</em></p>
+      ? <div className="spinner">
+          <ClipLoader color="#3498db" loading={loading} size={50} />
+          <p className="loading-text">Loading</p>
+        </div>
       : renderItemsList(items);
   
     return (

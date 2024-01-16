@@ -21,11 +21,15 @@ namespace Store.Data.Service
 
         public List<Order> GetFromCard(CheckUser user)
         {
-            return _context.Order.Where(item => item.UserName == user.UserName && item.UserEmail == user.UserEmail && item.OrderStatus == null).Include(item => item.Item).ToList();
+            return _context.Order.Where(item => item.UserName == user.UserName && item.UserEmail == user.UserEmail && item.OrderStatus == null)
+                                .Include(item => item.Item)
+                                .Include(item => item.ItemColorAndCount)
+                                .ToList();
         }
         public  IEnumerable<IGrouping<int, Order>> MyOrders(CheckUser user)
         { return  _context.Order.Where(item => item.UserName == user.UserName && item.UserEmail == user.UserEmail && item.OrderStatus != null )
                                 .Include(item => item.Item)
+                                .Include(item => item.ItemColorAndCount)
                                 .GroupBy(order => order.OrderNumber).ToList();
         }
         public void Confirm(CheckUser user)
@@ -41,19 +45,43 @@ namespace Store.Data.Service
                 number = lastItem.OrderNumber + 1;
             }
 
-            var orderItems = _context.Order.Where(item => item.UserName == user.UserName && item.UserEmail == user.UserEmail && item.OrderStatus == null).Include(item => item.Item).ToList();
+            var orderItems = _context.Order.Where(item => item.UserName == user.UserName && item.UserEmail == user.UserEmail && item.OrderStatus == null)
+                                            .Include(item => item.Item)
+                                            .Include(item => item.ItemColorAndCount)
+                                            .ToList();
 
             foreach( var item in orderItems)
             {
                 item.OrderStatus = "confirmed";
                 item.OrderNumber = number;
-                item.Item.ItemCount = item.Item.ItemCount - item.UserCount;
+                item.ItemColorAndCount.CountByColor -= item.UserCount; 
 
 
                 _context.Update(item);
             }
             _context.SaveChanges();
 
+        }
+
+        public void UpdateOrderItem(OrderForm order)
+        {
+            var item = _context.Order.FirstOrDefault(item=> item.UserName == order.UserName && item.ItemsId == order.ItemId && item.UserEmail == order.UserEmail && item.OrderStatus == null);
+            if (item != null){
+                if (order.TaskUpdate == "increment"){
+                    item.UserCount++;
+                }
+                else{
+                    item.UserCount--;
+                }
+                if(item.UserCount <= 0){
+                    _context.Order.Remove(item);
+                }
+                else{
+                     _context.Update(item);
+                }
+                _context.SaveChanges();
+    
+            }
         }
     }
 }

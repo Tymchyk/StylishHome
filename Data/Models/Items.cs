@@ -11,18 +11,28 @@ namespace Store.Data
         public int Id {get;set;}
         public string? ItemName{get;set;}
         public string? ItemDescription{get;set;}
-        public int ItemCount{get;set;}
-        public double ItemPrice{get;set;}
-        public int ItemDiscount{get;set;}
+        public string? ItemSize{get;set;}
+        public string? ItemMaterial{get;set;}
+        public string? ItemFrame{get;set;}
         public bool VerticalRotation{get;set;}
         public string? imageName{get;set;}
         public string? ItemType{get;set;}
-        public int? SceneValueId{get;set;}
-        public SceneValue? SceneValues{get;set;}
-        
-
         
     }
+
+    public class ItemColorAndCount
+    {
+        public int Id {get;set;}
+        public string? Color{get;set;}
+        public int? ItemsId{get;set;}
+        public Items? Item{get;set;}
+        public int? SceneValueId{get;set;} 
+        public SceneValue? SceneValues{get;set;}
+        public int CountByColor{get;set;}
+        public double ItemPrice{get;set;}
+
+    }
+
 
     public class SceneValue{
         public int Id{get;set;}
@@ -41,6 +51,8 @@ namespace Store.Data
 
         public int ItemsId{get;set;}
         public Items? Item{get;set;}
+         public int ItemColorAndCountId{get;set;}
+        public ItemColorAndCount? ItemColorAndCount{get;set;}
 
         public int UserCount{get;set;}
         public string? OrderStatus{get;set;}
@@ -51,6 +63,14 @@ namespace Store.Data
         public string? UserName{get;set;}
         public string? UserEmail{get;set;}
     }
+
+     public class OrderForm{
+        public string? UserName{get;set;}
+        public string? UserEmail{get;set;}
+        public int ItemId{get;set;}
+        public string? TaskUpdate{get;set;}
+    }
+
 
 
 }

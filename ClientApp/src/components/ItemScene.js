@@ -2,6 +2,7 @@ import React, { Suspense, useRef } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import { OrbitControls,Html } from '@react-three/drei';
+import { ClipLoader } from 'react-spinners';
 
 
 const RotatingObject = ({items}) => {
@@ -9,7 +10,7 @@ const RotatingObject = ({items}) => {
   const objectRef = useRef();
 
   return (
-    <group ref={objectRef} scale={[items.sceneValues.x, items.sceneValues.y, items.sceneValues.z]} position={[0, -2, 0]}>
+    <group ref={objectRef} scale={[items.sceneValues.x, items.sceneValues.y, items.sceneValues.z]} position={[-1, -0.5, 0]}>
       <primitive object={gltf.scene} />
     </group>
   );
@@ -18,13 +19,18 @@ const RotatingObject = ({items}) => {
 
 const ThreeScene = ({items}) => {
   return (
-    <Canvas style={{ width: '800px', height: '800px' }}>
+    <Canvas style={{ width: '650px', height: '650px',marginLeft:"100px" }}>
       <ambientLight />
-      <pointLight position={[10, 10, 10]} />
+      <pointLight position={[-5, -5, -5]} />
 
       <Suspense fallback={(
         <Html>
-          <div>Loading...</div>
+          <div style={{ marginTop: '-500px' }}>
+          <div className="spinner">
+          <ClipLoader color="#3498db" size={50} />
+          <p className="loading-text">Loading</p>
+        </div>
+        </div>
         </Html>
       )}>
         <RotatingObject items = {items} />

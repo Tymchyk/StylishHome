@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ItemsScene from './ItemScene';
 import { useAuth0 } from "@auth0/auth0-react";
+import { ClipLoader } from 'react-spinners';
 
 const FetchItems =() => {
     const [item, setItem] = useState(null);
@@ -11,6 +12,7 @@ const FetchItems =() => {
     const [price, setPrice] = useState(0);
     const { value } = useParams();
     const { user, isAuthenticated } = useAuth0();
+    const [selectedItem, setSelectedItem] = useState(null);
   
     useEffect(() => {
       const populateItemsData = async () => {
@@ -19,6 +21,9 @@ const FetchItems =() => {
           const response = result.data;
           setItem(response);
           setLoading(false);
+          if (response.length > 1) {
+            handleItemClick(response[0]);
+          }
         } catch (error) {
           console.error('Error fetching data:', error);
           setLoading(false);
@@ -48,41 +53,83 @@ const FetchItems =() => {
         "userEmail": user.email,
         "UserCount": count,
         "itemsid": id,
+        "ItemColorAndCountId":selectedItem.id
       }) 
+    };
+    const handleItemClick = (item) => {
+      setCount(0);
+      setPrice(0);
+      setSelectedItem(item);
     };
   
     const renderItemsList = (item) => {
       return (
         <div>
-        <ItemsScene items = {item} />
-        <div className ="itemBlock">
-          <div className ="itemDescription">
-          <h1 className="itemTitle">{item.itemName}</h1>
-          <h5 className="itemText">{item.itemDescription}</h5>
+           <div>
+                <ItemsScene items={selectedItem} />
+            </div>
+          <h1 className="itemTitle">{selectedItem.item.itemName}</h1>
+        <div style={{
+                marginTop: '50px',
+                marginLeft: '800px',
+                display: 'flex'
+              }}>
+          {item.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                marginLeft: '5px',
+                width: '50px',
+                height: '50px',
+                backgroundColor: item.color,
+                margin: '5px',
+                cursor: 'pointer',
+                border: '1px solid silver',
+                display:'flex'
+              }}
+              onClick={() => handleItemClick(item)}
+            ></div>
+          ))}
           </div>
-          <h6> Price: {item.itemPrice}$</h6>
-          <h6> Count: {item.itemCount}</h6>
-          {count === 0?<p></p>:
-          <p>Price for {count} items: {price}</p>}
-          <button onClick={() => incrementCount(item.itemPrice)} disabled={count === item.itemCount} >Increment</button>
-          <button onClick={ () => decrementCount(item.itemPrice)} disabled={count === 0}>Decrement</button>
-          {item.itemCount === 0?<p>The item is already on its way.</p>:<p></p>}
-          {isAuthenticated ? (
-              <div>
-              <button className = "btn btn-danger" onClick={() =>  addValueToCart(item.id)} disabled={item.itemCount === 0 || count === 0 } >Add to Сart</button>
+    
+          {selectedItem && (
+            <div>
+              <div className="itemBlock">
+                <h5> Price: {selectedItem.itemPrice}$</h5>
+                <h5> Count: {selectedItem.countByColor}</h5>
+                <p>Price for {count} items: {price} $</p>
+                <div className='add_remove_container'>
+                  <button className="btn btn-outline-light add_remove" onClick={() => incrementCount(selectedItem.itemPrice)} disabled={count === selectedItem.countByColor} ><img style={{ width: '20px' }} src={process.env.PUBLIC_URL + '/icons/add-outline.svg'} alt="Моє Зображення" /></button>
+                  <button className="btn btn-outline-light add_remove" onClick={() => decrementCount(selectedItem.itemPrice)} disabled={count === 0}><img style={{ width: '20px' }} src={process.env.PUBLIC_URL + '/icons/remove-outline.svg'} alt="Моє Зображення" /></button>
+                </div>
+                {selectedItem.item.itemCount === 0 ? <p>The item is already on its way.</p> : null}
+                {isAuthenticated ? (
+                  <div>
+                    <button className="btn btn-danger" onClick={() => addValueToCart(selectedItem.item.id)} disabled={selectedItem.item.itemCount === 0 || count === 0} >Add to Cart</button>
+                  </div>
+                ) : (
+                  <div>
+                    <p>You need to authorize</p>
+                  </div>
+                )}
+                
               </div>
-            ) : (
-              <div>
-                <p>You need to authorize</p>
-              </div>
-            )}
-        </div>
+              <h2>Description:</h2>
+              <h5 className="itemText">{selectedItem.item.itemDescription}</h5>
+              <h5 >Size: {selectedItem.item.itemSize}</h5>
+              <h5>Material: {selectedItem.item.itemMaterial}</h5>
+              <h5 >Frame: {selectedItem.item.itemFrame}</h5>
+            </div>
+            
+          )}
         </div>
       );
     };
-  
     const contents = loading
-      ? <p><em>Loading...</em></p>
+      ? <div className="spinner">
+          <ClipLoader color="#3498db" loading={loading} size={50} />
+          <p className="loading-text">Loading</p>
+        </div>
       : renderItemsList(item);
   
     return (

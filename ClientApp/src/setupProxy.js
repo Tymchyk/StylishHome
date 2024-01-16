@@ -48,6 +48,13 @@ const proxyConfig = {
       Connection: 'Keep-Alive'
     }
   },
+  "/items/updateorder": {
+    target: target,
+    secure: false,
+    headers: {
+      Connection: 'Keep-Alive'
+    }
+  },
 };
 
 const onError = (err, req, resp, target) => {
